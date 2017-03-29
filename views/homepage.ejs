@@ -1,0 +1,19 @@
+<h1>hello world</h1>
+
+
+<p>Click me anywhere to send a POST request to /login.</p>
+
+
+<script>
+
+document.body.addEventListener('click', function(){
+  io.socket.post('/login', {
+    username: 'foo',
+    password: 'bar'
+  }, function(data, jwr){
+    if (jwr.error) { throw jwr.error; }
+    console.log('ok got success response:',jwr);
+  });
+})
+
+</script>
